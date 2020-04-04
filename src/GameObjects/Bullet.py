@@ -14,3 +14,5 @@ class Bullet(GameObject):
 
     def propagate(self, step):
         pass
+
+    
