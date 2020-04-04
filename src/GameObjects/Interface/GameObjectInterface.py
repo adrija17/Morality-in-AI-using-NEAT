@@ -2,6 +2,8 @@ import pygame
 
 from abc import ABC, abstractmethod
 
+# Interface to be used for all GameObjects
+
 
 class GameObject(ABC):
 
