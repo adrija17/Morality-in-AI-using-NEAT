@@ -6,6 +6,7 @@ class Bullet(GameObject):
     def __init__(self, x, y):
         self.x = x
         self.y = y
+
         # change the hitbox size depending on the Image size of the bullet
         self.hitbox = (self.x, self.y, 20, 20)
 
@@ -14,5 +15,7 @@ class Bullet(GameObject):
 
     def propagate(self, step):
         pass
+
+    
 
     
