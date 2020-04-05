@@ -36,3 +36,4 @@ line_height = 450
 man = Player(50,line_height-20,20,20)
 game = Game()
 game.runGame()
+

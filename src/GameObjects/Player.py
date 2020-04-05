@@ -23,3 +23,4 @@ class Player(GameObject):
             self.x -= step
         elif keys[pygame.K_RIGHT] and self.x < canvas.get_width() - self.width - step:
             self.x += step
+
