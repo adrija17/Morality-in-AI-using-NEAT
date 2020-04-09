@@ -17,6 +17,7 @@ class Game:
         pygame.init()
         clock = pygame.time.Clock()
         player = Player(50,450,20,20)
+        step = 5
         pygame.display.set_caption('Basic Pygame program')
         self.isRunning = True
         while self.isRunning:
@@ -26,8 +27,11 @@ class Game:
                 if event.type == QUIT or (event.type == KEYDOWN and event.key == K_ESCAPE):
                     self.isRunning = False
                     
-            if len(keys)!= 0:
-                player.propagate(self.screen,5,keys)          
+            if keys[pygame.K_LEFT] and player.x > step:
+                player.propagate(self.screen,-step)  
+            elif keys[pygame.K_RIGHT] and player.x < self.screen.get_width() - player.width - step:
+                player.propagate(self.screen,step)
+
             self.screen.blit(self.background, (0, 0))
             player.drawCharacter(self.screen)
             pygame.display.flip()
@@ -37,5 +41,4 @@ class Game:
      
 game = Game()
 game.runGame()
-
 
