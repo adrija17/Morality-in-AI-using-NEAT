@@ -16,9 +16,7 @@ class Player(GameObject):
         pygame.draw.rect(canvas,(0,255,0),self.hitbox)
         self.hitbox = (self.x, self.y, self.width, self.height)
 
-    def propagate(self, canvas, step):
-        self.drawCharacter(canvas)
-        keys = pygame.key.get_pressed()
+    def propagate(self, canvas, step, keys):
         if keys[pygame.K_LEFT] and self.x > step:
             self.x -= step
         elif keys[pygame.K_RIGHT] and self.x < canvas.get_width() - self.width - step:

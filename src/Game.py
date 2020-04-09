@@ -11,29 +11,31 @@ class Game:
         self.background = self.background.convert()
         self.background.fill((250, 250, 250))
         self.isRunning = False
+        
 
     def runGame(self):
         pygame.init()
         clock = pygame.time.Clock()
+        player = Player(50,450,20,20)
         pygame.display.set_caption('Basic Pygame program')
         self.isRunning = True
         while self.isRunning:
-            dt = clock.tick(clock.get_fps())/1000
+            keys = pygame.key.get_pressed()
+            dt = clock.tick(40)
             for event in pygame.event.get():
-                if event.type == QUIT:
+                if event.type == QUIT or (event.type == KEYDOWN and event.key == K_ESCAPE):
                     self.isRunning = False
-                elif event.type == KEYDOWN:
-                    if event.key == K_ESCAPE:
-                        self.isRunning = False
-            man.propagate(self.screen,(120*dt))           
+                    
+            if len(keys)!= 0:
+                player.propagate(self.screen,5,keys)          
             self.screen.blit(self.background, (0, 0))
-            pygame.draw.aaline(self.screen, (0,0,0), (0,line_height), (600,line_height))
-            man.drawCharacter(self.screen)
+            player.drawCharacter(self.screen)
             pygame.display.flip()
+                 
         pygame.quit()
 
-line_height = 450
-man = Player(50,line_height-20,20,20)
+     
 game = Game()
 game.runGame()
+
 
