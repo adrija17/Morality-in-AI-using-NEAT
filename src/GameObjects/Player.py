@@ -16,8 +16,7 @@ class Player(GameObject):
         pygame.draw.rect(canvas,(0,255,0),self.hitbox)
         self.hitbox = (self.x, self.y, self.width, self.height)
 
-    def propagate(self, canvas, step):
-        self.drawCharacter(canvas)
+    def propagate(self, canvas, step, keys):
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LEFT] and self.x > step:
             self.x -= step
