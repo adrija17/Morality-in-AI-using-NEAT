@@ -1,6 +1,6 @@
 import pygame
 
-from Interface.GameObjectInterface import GameObject
+from GameObjects.Interface.GameObjectInterface import GameObject
 
 
 class Enemy(GameObject):
@@ -11,7 +11,8 @@ class Enemy(GameObject):
         self.hitbox = (self.x, self.y, 20, 20)
 
     def drawCharacter(self, canvas):
-        pass
+        self.hitbox = (self.x, self.y, 20, 20)
+        pygame.draw.rect(canvas, (0, 0, 0), self.hitbox)
 
     def propagate(self, speed):
-        pass
+        self.y += speed

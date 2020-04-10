@@ -1,6 +1,7 @@
 import pygame
 from pygame.locals import *
 from GameObjects.Player import Player
+from GameObjects.Enemy import Enemy
 
 
 class Game:
@@ -19,6 +20,7 @@ class Game:
         pygame.display.set_caption('Basic Pygame program')
 
         player = Player(50, 560, 20, 20)
+        enemy = Enemy(100, 30)
         self.isRunning = True
 
         while self.isRunning:
@@ -35,6 +37,8 @@ class Game:
 
             self.screen.blit(self.background, (0, 0))
             player.drawCharacter(self.screen)
+            enemy.drawCharacter(self.screen)
+            enemy.propagate(self.speed)
             pygame.display.flip()
 
         pygame.quit()
