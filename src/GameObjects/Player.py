@@ -16,5 +16,5 @@ class Player(GameObject):
         pygame.draw.rect(canvas, (0, 255, 0), self.hitbox)
         self.hitbox = (self.x, self.y, self.width, self.height)
 
-    def propagate(self, canvas, step):
+    def propagate(self, step):
         self.x += step
