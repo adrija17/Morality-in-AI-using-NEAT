@@ -2,6 +2,7 @@ import pygame
 from pygame.locals import *
 from GameObjects.Player import Player
 
+
 class Game:
     def __init__(self):
         self.flags = pygame.HWSURFACE | pygame.DOUBLEBUF | pygame.FULLSCREEN
@@ -11,34 +12,33 @@ class Game:
         self.background = self.background.convert()
         self.background.fill((250, 250, 250))
         self.isRunning = False
-        
+        self.speed = 5
 
     def runGame(self):
         pygame.init()
-        clock = pygame.time.Clock()
-        player = Player(50,450,20,20)
-        step = 5
         pygame.display.set_caption('Basic Pygame program')
+
+        player = Player(50, 560, 20, 20)
         self.isRunning = True
+
         while self.isRunning:
             keys = pygame.key.get_pressed()
-            dt = clock.tick(40)
+
             for event in pygame.event.get():
                 if event.type == QUIT or (event.type == KEYDOWN and event.key == K_ESCAPE):
                     self.isRunning = False
-                    
-            if keys[pygame.K_LEFT] and player.x > step:
-                player.propagate(self.screen,-step)  
-            elif keys[pygame.K_RIGHT] and player.x < self.screen.get_width() - player.width - step:
-                player.propagate(self.screen,step)
+
+            if keys[pygame.K_LEFT] and player.x > self.speed:
+                player.propagate(self.screen, -self.speed)
+            elif keys[pygame.K_RIGHT] and player.x < self.screen.get_width() - player.width - self.speed:
+                player.propagate(self.screen, self.speed)
 
             self.screen.blit(self.background, (0, 0))
             player.drawCharacter(self.screen)
             pygame.display.flip()
-                 
+
         pygame.quit()
 
-     
+
 game = Game()
 game.runGame()
-

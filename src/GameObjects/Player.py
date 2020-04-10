@@ -10,12 +10,11 @@ class Player(GameObject):
         self.width = width
         self.height = height
         # Modify the hitbox size depending on the Image size for player
-        self.hitbox = (self.x, self.y,self.width, self.height)
+        self.hitbox = (self.x, self.y, self.width, self.height)
 
     def drawCharacter(self, canvas):
-        pygame.draw.rect(canvas,(0,255,0),self.hitbox)
+        pygame.draw.rect(canvas, (0, 255, 0), self.hitbox)
         self.hitbox = (self.x, self.y, self.width, self.height)
 
     def propagate(self, canvas, step):
-            self.x += step
-
+        self.x += step
