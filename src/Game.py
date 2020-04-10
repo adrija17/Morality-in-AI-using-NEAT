@@ -20,7 +20,7 @@ class Game:
         pygame.display.set_caption('Basic Pygame program')
 
         player = Player(50, 560, 20, 20)
-        enemy = Enemy(100, 30)
+        enemy = Enemy(100, 30, 20, 17)
         self.isRunning = True
 
         while self.isRunning:
@@ -31,9 +31,9 @@ class Game:
                     self.isRunning = False
 
             if keys[pygame.K_LEFT] and player.x > self.speed:
-                player.propagate(self.screen, -self.speed)
+                player.propagate(-self.speed)
             elif keys[pygame.K_RIGHT] and player.x < self.screen.get_width() - player.width - self.speed:
-                player.propagate(self.screen, self.speed)
+                player.propagate(self.speed)
 
             self.screen.blit(self.background, (0, 0))
             player.drawCharacter(self.screen)
