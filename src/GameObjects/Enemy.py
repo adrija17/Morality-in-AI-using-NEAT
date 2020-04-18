@@ -9,13 +9,16 @@ class Enemy(GameObject):
         self.y = y
         self.width = width
         self.height = height
-        self.hitbox = (self.x, self.y, self.width, self.height)
+        self.hitbox = pygame.Rect(self.x, self.y, self.width, self.height)
         self.image = pygame.image.load(
             "GameObjects/SpriteImages/EnemySpaceship.png")
 
     def drawCharacter(self, canvas):
-        self.hitbox = (self.x, self.y, self.width, self.height)
+        self.hitbox = pygame.Rect(self.x, self.y, self.width, self.height)
         canvas.blit(self.image, (self.x, self.y))
 
     def propagate(self, speed):
         self.y += speed
+
+    def checkCollission(self, gameObject):
+        return self.hitbox.colliderect(gameObject.hitbox)

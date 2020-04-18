@@ -60,7 +60,14 @@ class Game:
         for enemy in self.aliveEnemies:
             enemy.propagate(self.enemySpeed)
             self.__cleanEnemyIfDead__(enemy)
+            self.__checkCollissionWithBullets__(enemy)
             enemy.drawCharacter(self.screen)
+
+    def __checkCollissionWithBullets__(self, enemy):
+        for bullet in self.aliveBullets:
+            if bullet.checkCollission(enemy):
+                self.aliveBullets.remove(bullet)
+                self.aliveEnemies.remove(enemy)
 
     # ----------------------------------------- Bullet utility methods ---------------------------------------------------------------------------------
 
