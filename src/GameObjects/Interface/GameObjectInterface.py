@@ -2,7 +2,7 @@ import pygame
 
 from abc import ABC, abstractmethod
 
-# Interface to be used for all GameObjects
+# Abstract class to be implemented by all GameObjects
 
 
 class GameObject(ABC):
@@ -13,4 +13,8 @@ class GameObject(ABC):
 
     @abstractmethod
     def propagate(self):
+        pass
+
+    @abstractmethod
+    def checkCollission(self, gameObject):
         pass
