@@ -9,12 +9,16 @@ class Player(GameObject):
         self.y = y
         self.width = width
         self.height = height
+
         # Modify the hitbox size depending on the Image size for player
-        self.hitbox = (self.x, self.y, self.width, self.height)
+        self.hitbox = pygame.Rect(self.x, self.y, self.width, self.height)
 
     def drawCharacter(self, canvas):
-        self.hitbox = (self.x, self.y, self.width, self.height)
+        self.hitbox = pygame.Rect(self.x, self.y, self.width, self.height)
         pygame.draw.rect(canvas, (0, 255, 0), self.hitbox)
 
     def propagate(self, step):
         self.x += step
+
+    def checkCollission(self, gameObject):
+        return self.hitbox.colliderect(gameObject.hitbox)
