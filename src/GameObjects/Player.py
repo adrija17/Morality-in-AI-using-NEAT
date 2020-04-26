@@ -9,13 +9,15 @@ class Player(GameObject):
         self.y = y
         self.width = width
         self.height = height
+        self.image = pygame.image.load(
+            "GameObjects/SpriteImages/PlayerSpaceship.png")
 
         # Modify the hitbox size depending on the Image size for player
         self.hitbox = pygame.Rect(self.x, self.y, self.width, self.height)
 
     def drawCharacter(self, canvas):
         self.hitbox = pygame.Rect(self.x, self.y, self.width, self.height)
-        pygame.draw.rect(canvas, (0, 255, 0), self.hitbox)
+        canvas.blit(self.image, (self.x, self.y))
 
     def propagate(self, step):
         self.x += step
