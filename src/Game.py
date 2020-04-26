@@ -61,6 +61,7 @@ class Game:
             enemy.propagate(self.enemySpeed)
             self.__cleanEnemyIfDead__(enemy)
             self.__checkCollissionWithBullets__(enemy)
+            self.__checkCollisionWithPlayer__(enemy)
             enemy.drawCharacter(self.screen)
 
     def __checkCollissionWithBullets__(self, enemy):
@@ -86,6 +87,11 @@ class Game:
     def __cleanBulletIfDead__(self, bullet):
         if bullet.y < -self.bulletHeight:
             self.aliveBullets.remove(bullet)
+
+    # ----------------------------------------- Player utility methods --------------------------------------------------------------------------------
+
+    def __checkCollisionWithPlayer__(self, enemy):
+        self.isRunning = not self.player.checkCollission(enemy)
 
     def runGame(self):
         pygame.init()
